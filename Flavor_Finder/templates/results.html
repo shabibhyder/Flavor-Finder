@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Recipe Results</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <h2>Recipes</h2>
+            <div class="row">
+                {% for recipe in recipes %}
+                <div class="col-sm-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ recipe['recipe']['image'] }}" alt="{{ recipe['recipe']['label'] }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ recipe['recipe']['label'] }}</h5>
+                            <p class="card-text">Source: {{ recipe['recipe']['source'] }}</p>
+                            <a href="{{ recipe['recipe']['url'] }}" class="btn btn-primary" target="_blank">View Recipe</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
